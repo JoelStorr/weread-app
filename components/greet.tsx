@@ -113,7 +113,10 @@ export default function Greet() {
       <button onClick={exportName}>Export Name</button>
       <button onClick={loadNameFromFile}>Load your Name</button> 
 
+        <br/>
       <Link href={"/settings"}>Settings</Link>
+        <br/>
+      <Link href={"/jsfiles"}>JS Files</Link>
     </div>
   );
 }
