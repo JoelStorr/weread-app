@@ -3,11 +3,12 @@
 
 mod commands;
 use commands::greet::greet;
+use commands::files::{save_file, load_file};
 
 fn main() {
   tauri::Builder::default()
     .plugin(tauri_plugin_store::Builder::default().build())
-    .invoke_handler(tauri::generate_handler![greet])
+    .invoke_handler(tauri::generate_handler![greet, save_file, load_file])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
