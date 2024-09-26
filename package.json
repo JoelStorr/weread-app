@@ -12,7 +12,8 @@
   "dependencies": {
     "next": "14.2.13",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#v1"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.6.2",
