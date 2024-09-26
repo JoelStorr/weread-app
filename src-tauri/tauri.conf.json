@@ -59,7 +59,11 @@
         "height": 600,
         "resizable": true,
         "title": "WeRead",
-        "width": 800
+        "width": 800,
+        "center": false,
+        "x": 2500.0,
+        "y":0
+        
       }
     ]
   }
