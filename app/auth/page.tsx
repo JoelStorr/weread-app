@@ -1,4 +1,5 @@
 "use client";
+import { invoke } from "@tauri-apps/api";
 import React, { FormEvent, useRef, } from "react";
 
 // TODO: Allow basic version of user login and registration
@@ -21,6 +22,13 @@ export default function page() {
 
   async function onLoginHandler(e: FormEvent) {
     e.preventDefault();
+
+    let response = await invoke<string>('login', {email: loginEmailRef.current?.value, password: loginPassword.current?.value});
+
+    console.log(response)
+
+
+
   }
 
   async function onSignUpHandler(e: FormEvent) {
