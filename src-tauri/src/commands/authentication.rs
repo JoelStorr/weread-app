@@ -1,58 +1,42 @@
 use std::collections::HashMap;
 use reqwest;
 
-// TODO: Login Function
+// Login existing user
 #[tauri::command]
-pub async fn login(email: String, password: String)->String{
-    
+pub async fn login(email: String, password: String) -> String {
     let mut map = HashMap::new();
     map.insert("email", email);
     map.insert("password", password);
 
-
-
     let client = reqwest::Client::new();
-    let resp = match client.post("http://localhost:8080/auth/signinemail")
-        .json(&map)
-        .send().await {
-            Ok(response) => {
-                // TODO: Handle Token Globally in app
+    let resp = match client.post("http://localhost:8080/auth/signinemail").json(&map).send().await {
+        Ok(response) => {
+            // TODO: Handle Token Globally in app
 
-                return response.text().await.unwrap()
-            },
-            Err(err) => panic!("Error {}", err)
-        };
-    
-    
-
+            return response.text().await.unwrap();
+        }
+        Err(err) => panic!("Error {}", err),
+    };
 }
 
-
-
-
-// TODO: Register Function
+// Register new user
 #[tauri::command]
-pub async fn register(email: String, password: String, username: String)->String{
-    
+pub async fn register(email: String, password: String, username: String) -> String {
     let mut map = HashMap::new();
     map.insert("username", username);
     map.insert("email", email);
     map.insert("password", password);
 
-
-
     let client = reqwest::Client::new();
-    let resp = match client.post("http://localhost:8080/auth/register")
-        .json(&map)
-        .send().await {
-            Ok(response) => {
-                // TODO: Handle Token Globally in app
-                
-                return response.text().await.unwrap()
-            },
-            Err(err) => panic!("Error {}", err)
-        };
-    
-    
+    let resp = match client.post("http://localhost:8080/auth/register").json(&map).send().await {
+        Ok(response) => {
+            // TODO: Handle Token Globally in app
 
+            return response.text().await.unwrap();
+        }
+        Err(err) => panic!("Error {}", err),
+    };
 }
+
+
+// TODO: Handle Token on the backend and allow refresh
