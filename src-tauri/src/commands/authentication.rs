@@ -9,7 +9,7 @@ pub async fn login(email: String, password: String) -> String {
     map.insert("password", password);
 
     let client = reqwest::Client::new();
-    let resp = match client.post("http://localhost:8080/auth/signinemail").json(&map).send().await {
+    match client.post("http://localhost:8080/auth/signinemail").json(&map).send().await {
         Ok(response) => {
             // TODO: Handle Token Globally in app
 
@@ -28,7 +28,7 @@ pub async fn register(email: String, password: String, username: String) -> Stri
     map.insert("password", password);
 
     let client = reqwest::Client::new();
-    let resp = match client.post("http://localhost:8080/auth/register").json(&map).send().await {
+    match client.post("http://localhost:8080/auth/register").json(&map).send().await {
         Ok(response) => {
             // TODO: Handle Token Globally in app
 
