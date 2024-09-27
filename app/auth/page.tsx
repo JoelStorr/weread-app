@@ -27,12 +27,21 @@ export default function page() {
 
     console.log(response)
 
-
-
   }
 
   async function onSignUpHandler(e: FormEvent) {
     e.preventDefault();
+
+    let response = await invoke<string>("register", {
+      email: signupEmailRef.current?.value,
+      password: signupEmailRef.current?.value,
+      username: signupUsernameRef.current?.value,
+    });
+
+    console.log(response);
+
+
+
   }
 
   return (
